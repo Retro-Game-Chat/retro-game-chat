@@ -1,11 +1,11 @@
 <template>
-  <div class="home">
-    hello world.
+  <div class="game">
+    hello {{ $auth.user.name }}.
   </div>
 </template>
 
 <script>
 export default {
-  name: "Home"
+  name: "Game"
 };
 </script>
