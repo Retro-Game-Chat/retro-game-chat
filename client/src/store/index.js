@@ -7,6 +7,8 @@ export default new Vuex.Store({
   state: {
     level: {
       name: 'Forest',
+      w: 30,
+      h: 12,
       objects: [
         {
           x: 12,
@@ -18,6 +20,20 @@ export default new Vuex.Store({
         },
         {
           x: 10,
+          y: 2
+        }
+      ],
+      players: [
+        {
+          x: 0,
+          y: 4
+        },
+        {
+          x: 28,
+          y: 11
+        },
+        {
+          x: 15,
           y: 2
         }
       ],
@@ -35,62 +51,5 @@ export default new Vuex.Store({
       }
     },
   },
-  actions: {
-    up({ commit, state }) {
-      const { character } = state
-      let { x: newX, y: newY } = character
-
-      newY--
-
-      const clash = state.level.objects.find(object => {
-        return newX === object.x && newY === object.y
-      })
-
-      if (!clash) {
-        commit('updatePos', [newX, newY])
-      }
-    },
-    down({ commit, state }) {
-      const { character } = state
-      let { x: newX, y: newY } = character
-
-      newY++
-
-      const clash = state.level.objects.find(object => {
-        return newX === object.x && newY === object.y
-      })
-
-      if (!clash) {
-        commit('updatePos', [newX, newY])
-      }
-    },
-    left({ commit, state }) {
-      const { character } = state
-      let { x: newX, y: newY } = character
-
-      newX--
-
-      const clash = state.level.objects.find(object => {
-        return newX === object.x && newY === object.y
-      })
-
-      if (!clash) {
-        commit('updatePos', [newX, newY])
-      }
-    },
-    right({ commit, state }) {
-      const { character } = state
-      let { x: newX, y: newY } = character
-
-      newX++
-
-      const clash = state.level.objects.find(object => {
-        return newX === object.x && newY === object.y
-      })
-
-      if (!clash) {
-        commit('updatePos', [newX, newY])
-      }
-    },
-  },
+  actions: {},
 });

@@ -1,0 +1,25 @@
+<template>
+  <div class="level border-2 border-black relative" :style="{ width: `${$store.state.level.w}rem`, height: `${$store.state.level.h}rem` }" >
+    <template v-for="(object, index) in $store.state.level.objects">
+      <LevelObject :key="`obj${index}`" :x="object.x" :y="object.y" />
+    </template>
+    <template v-for="(player, index) in $store.state.level.players">
+      <SpriteContainer :key="`char${index}`" :x="player.x" :y="player.y" />
+    </template>
+    <MySprite />
+  </div>
+</template>
+
+<script>
+import SpriteContainer from '../components/SpriteContainer'
+import MySprite from '../components/MySprite'
+import LevelObject from '../components/LevelObject'
+
+export default {
+  components: {
+    SpriteContainer,
+    MySprite,
+    LevelObject
+  },
+}
+</script>

@@ -1,6 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import Home from "../views/Home.vue";
+import HomeView from "../views/HomeView.vue";
 import { authGuard } from "../auth";
 
 Vue.use(VueRouter);
@@ -8,13 +8,13 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: "/",
-    name: "Home",
-    component: Home
+    name: "HomeView",
+    component: HomeView
   },
   {
     path: "/game",
-    name: "Game",
-    component: () => import("../views/Game.vue"),
+    name: "GameView",
+    component: () => import("../views/GameView.vue"),
     beforeEnter: authGuard
   }
 ];
