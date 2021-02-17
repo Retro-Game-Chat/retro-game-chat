@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import SpriteContainer from '../components/SpriteContainer'
+import SpriteContainer from '@/components/Game/SpriteContainer'
 
 export default {
   components: {

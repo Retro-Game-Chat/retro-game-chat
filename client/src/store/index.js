@@ -1,10 +1,11 @@
-import Vue from "vue";
-import Vuex from "vuex";
+import Vue from "vue"
+import Vuex from "vuex"
 
-Vue.use(Vuex);
+Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    chatting: false,
     level: {
       name: 'Forest',
       w: 30,
@@ -50,6 +51,12 @@ export default new Vuex.Store({
         y
       }
     },
+    chatting(state) {
+      state.chatting = true
+    },
+    notChatting(state) {
+      state.chatting = false
+    },
   },
   actions: {},
-});
+})
