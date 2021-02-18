@@ -45,10 +45,11 @@ export default new Vuex.Store({
     }
   },
   mutations: {
-    updatePos(state, [x, y]) {
+    updatePos(state, [x, y, direction]) {
       state.character = {
         x,
-        y
+        y,
+        direction
       }
     },
     chatting(state) {
