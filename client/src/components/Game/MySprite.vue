@@ -1,13 +1,13 @@
 <template>
-    <SpriteContainer :x="$store.state.character.x" :y="$store.state.character.y" />
+  <SpriteContainer :character="$store.state.character" />
 </template>
 
 <script>
-import SpriteContainer from '@/components/Game/SpriteContainer'
+import SpriteContainer from '@/components/Game/SpriteContainer';
 
 export default {
   components: {
     SpriteContainer,
   },
-}
+};
 </script>
