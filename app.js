@@ -1,10 +1,13 @@
 const express = require("express");
 const path = require("path");
 const logger = require("morgan");
+const http = require("http");
 
 const indexRouter = require("./routes/index");
 
 const app = express();
+const server = http.createServer(app);
+const io = require("socket.io")(server);
 
 app.use(logger("dev"));
 app.use(express.json());
@@ -16,4 +19,8 @@ if (process.env.NODE_ENV === "production") {
 
 app.use("/", indexRouter);
 
-module.exports = app;
+io.on("connection", (socket) => {
+  console.log("a user connected");
+});
+
+module.exports = { app, server };

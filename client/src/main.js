@@ -5,6 +5,8 @@ import router from "./router";
 import store from "./store";
 import { domain, clientId } from "../auth_config.json";
 
+import VueSocketIO from "vue-socket.io";
+
 import "./assets/styles/index.css";
 
 Vue.config.productionTip = false;
@@ -20,6 +22,19 @@ Vue.use(Auth0Plugin, {
     );
   },
 });
+
+Vue.use(
+  new VueSocketIO({
+    debug: true,
+    connection: "/",
+    vuex: {
+      store,
+      actionPrefix: "SOCKET_",
+      mutationPrefix: "SOCKET_",
+    },
+    // options: { path: "/my-app/" } //Optional options
+  })
+);
 
 new Vue({
   router,
