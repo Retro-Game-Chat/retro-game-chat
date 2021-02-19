@@ -1,10 +1,7 @@
 <template>
-  <div class="homeView">
-    hello world.
-  </div>
+  <div class="homeView">hello world.</div>
 </template>
 
 <script>
-export default {
-}
+export default {};
 </script>

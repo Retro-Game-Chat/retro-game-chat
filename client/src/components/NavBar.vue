@@ -2,10 +2,7 @@
   <nav class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 border-black border">
     <ul>
       <li v-if="!$auth.isAuthenticated && !$auth.loading">
-        <button
-          id="qsLoginBtn"
-          @click.prevent="login"
-        >Log in</button>
+        <button id="qsLoginBtn" @click.prevent="login">Log in</button>
       </li>
 
       <li v-if="$auth.isAuthenticated">
@@ -16,10 +13,7 @@
         />
         {{ $auth.user.name }}
         <router-link to="/game">Game</router-link>
-        <button
-          id="qsLoginBtn"
-          @click.prevent="logout"
-        >Log out</button>
+        <button id="qsLoginBtn" @click.prevent="logout">Log out</button>
       </li>
     </ul>
   </nav>
@@ -27,15 +21,15 @@
 
 <script>
 export default {
-  name: "NavBar",
+  name: 'NavBar',
   methods: {
     login() {
       this.$auth.loginWithRedirect();
     },
     logout() {
       this.$auth.logout();
-      this.$router.push({ path: "/" });
-    }
-  }
+      this.$router.push({ path: '/' });
+    },
+  },
 };
 </script>

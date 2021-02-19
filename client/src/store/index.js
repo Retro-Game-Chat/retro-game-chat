@@ -1,7 +1,7 @@
-import Vue from "vue"
-import Vuex from "vuex"
+import Vue from 'vue';
+import Vuex from 'vuex';
 
-Vue.use(Vuex)
+Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
@@ -13,51 +13,51 @@ export default new Vuex.Store({
       objects: [
         {
           x: 12,
-          y: 4
+          y: 4,
         },
         {
           x: 22,
-          y: 5
+          y: 5,
         },
         {
           x: 10,
-          y: 2
-        }
+          y: 2,
+        },
       ],
       players: [
         {
           x: 0,
-          y: 4
+          y: 4,
         },
         {
           x: 28,
-          y: 11
+          y: 11,
         },
         {
           x: 15,
-          y: 2
-        }
+          y: 2,
+        },
       ],
     },
     character: {
       x: 0,
-      y: 0
-    }
+      y: 0,
+    },
   },
   mutations: {
     updatePos(state, [x, y, direction]) {
       state.character = {
         x,
         y,
-        direction
-      }
+        direction,
+      };
     },
     chatting(state) {
-      state.chatting = true
+      state.chatting = true;
     },
     notChatting(state) {
-      state.chatting = false
+      state.chatting = false;
     },
   },
   actions: {},
-})
+});

@@ -1,5 +1,9 @@
 <template>
-  <div class="w-4 h-4 absolute" :class="appearance" :style="{ left: `${x}rem`, bottom: `${y}rem` }"></div>
+  <div
+    class="w-4 h-4 absolute"
+    :class="appearance"
+    :style="{ left: `${x}rem`, bottom: `${y}rem` }"
+  ></div>
 </template>
 
 <script>
@@ -15,8 +19,8 @@ export default {
     },
     appearance: {
       type: String,
-      default: 'bg-green-800'
+      default: 'bg-green-800',
     },
-  }
-}
+  },
+};
 </script>
