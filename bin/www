@@ -6,6 +6,7 @@
 
 const { app, server } = require("../app");
 const debug = require("debug")("retro-game-chat:server");
+require("dotenv").config();
 
 /**
  * Get port from environment and store in Express.

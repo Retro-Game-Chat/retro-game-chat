@@ -3,7 +3,7 @@ const path = require("path");
 const logger = require("morgan");
 const http = require("http");
 
-const indexRouter = require("./routes/index");
+const apiRouter = require("./routes/api");
 
 const app = express();
 const server = http.createServer(app);
@@ -17,7 +17,7 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "client/dist")));
 }
 
-app.use("/", indexRouter);
+app.use("/api", apiRouter);
 
 io.on("connection", (socket) => {
   console.log("a user connected");

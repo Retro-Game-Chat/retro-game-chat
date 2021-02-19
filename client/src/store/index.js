@@ -1,5 +1,6 @@
 import Vue from "vue";
 import Vuex from "vuex";
+import * as axios from "axios";
 
 Vue.use(Vuex);
 
@@ -45,12 +46,21 @@ export default new Vuex.Store({
     },
   },
   mutations: {
-    updatePos(state, [x, y, direction]) {
+    updatePos(state, [x, y]) {
       state.character = {
         x,
         y,
-        direction,
       };
+
+      // const accessToken = await this.$auth.getTokenSilently();
+      axios
+        .post("/api/user/position", state.character)
+        .then(function (response) {
+          console.log(response);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
     },
     chatting(state) {
       state.chatting = true;
