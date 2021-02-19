@@ -19,7 +19,7 @@ export default {
     },
     appearance: {
       type: String,
-      default: 'bg-green-800',
+      default: "bg-green-800",
     },
   },
 };

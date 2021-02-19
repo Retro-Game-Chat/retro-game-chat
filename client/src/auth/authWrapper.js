@@ -1,5 +1,5 @@
-import Vue from 'vue';
-import createAuth0Client from '@auth0/auth0-spa-js';
+import Vue from "vue";
+import createAuth0Client from "@auth0/auth0-spa-js";
 
 const DEFAULT_REDIRECT_CALLBACK = () =>
   window.history.replaceState({}, document.title, window.location.pathname);
@@ -80,8 +80,8 @@ export const useAuth0 = ({
 
       try {
         if (
-          window.location.search.includes('code=') &&
-          window.location.search.includes('state=')
+          window.location.search.includes("code=") &&
+          window.location.search.includes("state=")
         ) {
           const { appState } = await this.auth0Client.handleRedirectCallback();
           this.error = null;

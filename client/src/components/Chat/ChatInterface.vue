@@ -5,14 +5,7 @@
 </template>
 
 <script>
-import ChatInput from '@/components/Chat/ChatInput';
-
-const keys = {
-  Enter: {
-    name: 'enter',
-    do: 'enterKey',
-  },
-};
+import ChatInput from "@/components/Chat/ChatInput";
 
 export default {
   components: {
@@ -20,11 +13,11 @@ export default {
   },
 
   mounted() {
-    window.addEventListener('keydown', this.listenKeydown);
+    window.addEventListener("keydown", this.listenKeydown);
   },
 
   beforeDestroy() {
-    window.removeEventListener('keydown', this.listenKeydown);
+    window.removeEventListener("keydown", this.listenKeydown);
   },
 
   methods: {
@@ -34,14 +27,14 @@ export default {
     },
 
     listenEnter(e) {
-      if (e.key === 'Enter' && !this.$store.state.chatting) {
-        this.$store.commit('chatting');
+      if (e.key === "Enter" && !this.$store.state.chatting) {
+        this.$store.commit("chatting");
       }
     },
 
     listenEsc(e) {
-      if (e.key === 'Escape' && this.$store.state.chatting) {
-        this.$store.commit('notChatting');
+      if (e.key === "Escape" && this.$store.state.chatting) {
+        this.$store.commit("notChatting");
       }
     },
   },

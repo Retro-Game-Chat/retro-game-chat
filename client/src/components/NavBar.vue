@@ -21,14 +21,14 @@
 
 <script>
 export default {
-  name: 'NavBar',
+  name: "NavBar",
   methods: {
     login() {
       this.$auth.loginWithRedirect();
     },
     logout() {
       this.$auth.logout();
-      this.$router.push({ path: '/' });
+      this.$router.push({ path: "/" });
     },
   },
 };

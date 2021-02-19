@@ -26,12 +26,12 @@ export default {
 
         if (oldX !== newX || oldY !== newY) {
           newCharacter.moving = true;
-          newCharacter.direction = 'left';
+          newCharacter.direction = "left";
 
           if (newY !== oldY) {
-            newCharacter.direction = newY < oldY ? 'down' : 'up';
+            newCharacter.direction = newY < oldY ? "down" : "up";
           } else if (newX !== oldX) {
-            newCharacter.direction = newX < oldX ? 'left' : 'right';
+            newCharacter.direction = newX < oldX ? "left" : "right";
           }
 
           setTimeout(() => {

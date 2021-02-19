@@ -17,9 +17,9 @@
 </template>
 
 <script>
-import SpriteContainer from '@/components/Game/SpriteContainer';
-import MySprite from '@/components/Game/MySprite';
-import LevelObject from '@/components/Game/LevelObject';
+import SpriteContainer from "@/components/Game/SpriteContainer";
+import MySprite from "@/components/Game/MySprite";
+import LevelObject from "@/components/Game/LevelObject";
 
 export default {
   components: {

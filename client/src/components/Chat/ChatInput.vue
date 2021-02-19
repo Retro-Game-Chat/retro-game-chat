@@ -27,14 +27,11 @@ export default {
 
   methods: {
     enterKey() {
-      if (this.$store.state.chatting) {
-        console.log(`submit the message: ${this.$refs.chatInput.value}`);
-        setTimeout(() => {
-          console.log(`processed the message: ${this.$refs.chatInput.value}`);
-          this.$refs.chatInput.value = '';
-          this.$store.commit('notChatting');
-        }, 100);
-      }
+      console.log(`submit the message: ${this.$refs.chatInput.value}`);
+      setTimeout(() => {
+        console.log(`processed the message: ${this.$refs.chatInput.value}`);
+        this.$store.commit("notChatting");
+      }, 100);
     },
   },
 };

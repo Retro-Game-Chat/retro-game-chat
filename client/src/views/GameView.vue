@@ -6,8 +6,8 @@
 </template>
 
 <script>
-import ChatInterface from '@/components/Chat/ChatInterface';
-import GameInterface from '@/components/Game/GameInterface';
+import ChatInterface from "@/components/Chat/ChatInterface";
+import GameInterface from "@/components/Game/GameInterface";
 
 export default {
   components: {

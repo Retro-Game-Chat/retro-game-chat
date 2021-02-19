@@ -7,40 +7,40 @@
 </template>
 
 <script>
-import GameLevel from '@/components/Game/GameLevel';
+import GameLevel from "@/components/Game/GameLevel";
 
 const keys = {
   w: {
-    name: 'up',
-    do: 'moveUp',
+    name: "up",
+    do: "moveUp",
   },
   ArrowUp: {
-    name: 'up',
-    do: 'moveUp',
+    name: "up",
+    do: "moveUp",
   },
   s: {
-    name: 'down',
-    do: 'moveDown',
+    name: "down",
+    do: "moveDown",
   },
   ArrowDown: {
-    name: 'down',
-    do: 'moveDown',
+    name: "down",
+    do: "moveDown",
   },
   a: {
-    name: 'left',
-    do: 'moveLeft',
+    name: "left",
+    do: "moveLeft",
   },
   ArrowLeft: {
-    name: 'left',
-    do: 'moveLeft',
+    name: "left",
+    do: "moveLeft",
   },
   d: {
-    name: 'right',
-    do: 'moveRight',
+    name: "right",
+    do: "moveRight",
   },
   ArrowRight: {
-    name: 'right',
-    do: 'moveRight',
+    name: "right",
+    do: "moveRight",
   },
 };
 
@@ -56,11 +56,11 @@ export default {
   },
 
   mounted() {
-    window.addEventListener('keydown', this.listenKeyDown);
+    window.addEventListener("keydown", this.listenKeyDown);
   },
 
   beforeDestroy() {
-    window.removeEventListener('keydown', this.listenKeyDown);
+    window.removeEventListener("keydown", this.listenKeyDown);
   },
 
   methods: {
@@ -129,7 +129,7 @@ export default {
       });
 
       if (!clash) {
-        this.$store.commit('updatePos', [newX, newY]);
+        this.$store.commit("updatePos", [newX, newY]);
       }
     },
   },
