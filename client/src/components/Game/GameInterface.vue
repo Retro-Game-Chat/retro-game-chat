@@ -119,6 +119,7 @@ export default {
 
       const { state } = this.$store;
       const rem = 16;
+      const offsetLeft = this.$refs.gameInterface.offsetLeft;
       const pageWidth = this.$refs.gameInterface.offsetParent.offsetWidth;
       const gameWidth = this.$refs.gameInterface.offsetWidth;
       const padding = (pageWidth - gameWidth) / 2;
