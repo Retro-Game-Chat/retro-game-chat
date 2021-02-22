@@ -8,6 +8,7 @@ import { domain, clientId } from "../auth_config.json";
 import VueSocketIO from "vue-socket.io";
 
 import "./assets/styles/index.css";
+import "nes.css/css/nes.min.css";
 
 Vue.config.productionTip = false;
 

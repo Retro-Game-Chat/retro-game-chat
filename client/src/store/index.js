@@ -9,7 +9,7 @@ export default new Vuex.Store({
     chatting: false,
     level: {
       name: "Forest",
-      w: 30,
+      w: 120,
       h: 12,
       objects: [
         {
@@ -53,14 +53,14 @@ export default new Vuex.Store({
       };
 
       // const accessToken = await this.$auth.getTokenSilently();
-      axios
-        .post("/api/user/position", state.character)
-        .then(function (response) {
-          console.log(response);
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
+      // axios
+      //   .post("/api/user/position", state.character)
+      //   .then(function (response) {
+      //     console.log(response);
+      //   })
+      //   .catch(function (error) {
+      //     console.log(error);
+      //   });
     },
     chatting(state) {
       state.chatting = true;

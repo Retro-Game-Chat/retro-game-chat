@@ -1,8 +1,12 @@
 <template>
-  <div class="gameInterface">
-    hello {{ $auth.user.name }}. Your position is
-    {{ $store.state.character.x }},{{ $store.state.character.y }}.
-    <GameLevel />
+  <div
+    id="gameInterface"
+    class="overflow-hidden border border-black"
+    ref="gameInterface"
+  >
+    <!-- hello {{ $auth.user.name }}. Your position is
+    {{ $store.state.character.x }},{{ $store.state.character.y }}. -->
+    <GameLevel class="mx-auto" />
   </div>
 </template>
 
@@ -114,6 +118,10 @@ export default {
       }
 
       const { state } = this.$store;
+      const rem = 16;
+      const pageWidth = this.$refs.gameInterface.offsetParent.offsetWidth;
+      const gameWidth = this.$refs.gameInterface.offsetWidth;
+      const padding = (pageWidth - gameWidth) / 2;
 
       if (
         newX === state.level.w ||
@@ -127,6 +135,13 @@ export default {
       const clash = state.level.objects.find((object) => {
         return newX === object.x && newY === object.y;
       });
+
+      if ((newX + 1) * rem > gameWidth - rem) {
+        console.log(newX + 1, Math.floor(gameWidth / rem - 1));
+        console.log(this.$refs.gameInterface.offsetLeft);
+        // this.$refs.gameInterface.offsetLeft = (newX + 1) * rem;
+        console.log("adjust the view offsetLeft");
+      }
 
       if (!clash) {
         this.$store.commit("updatePos", [newX, newY]);

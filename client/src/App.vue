@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <nav-bar />
-    <router-view />
+    <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
+      <router-view />
+    </div>
   </div>
 </template>
 

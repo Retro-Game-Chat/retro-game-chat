@@ -1,5 +1,5 @@
 <template>
-  <div class="gameView">
+  <div>
     <GameInterface />
     <ChatInterface />
   </div>
