@@ -9,8 +9,8 @@ export default new Vuex.Store({
     chatting: false,
     level: {
       name: "Forest",
-      w: 120,
-      h: 12,
+      w: 40,
+      h: 40,
       objects: [
         {
           x: 12,
