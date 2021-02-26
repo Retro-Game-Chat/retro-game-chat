@@ -1,7 +1,7 @@
 <template>
   <div
     id="gameInterface"
-    class="overflow-hidden border border-black"
+    class="overflow-hidden border border-black max-h-80"
     ref="gameInterface"
   >
     <!-- hello {{ $auth.user.name }}. Your position is
@@ -60,6 +60,7 @@ export default {
   },
 
   mounted() {
+    this.tryAndMove([0, 0]);
     window.addEventListener("keydown", this.listenKeyDown);
   },
 
@@ -134,6 +135,7 @@ export default {
 
       const rem = 16;
       const gameWidth = this.$refs.gameInterface.offsetWidth;
+      const gameHeight = this.$refs.gameInterface.offsetHeight;
       const gameWidthRem = Math.floor(gameWidth / rem);
       const playerSize = 1;
       const margin = 10;
@@ -143,16 +145,25 @@ export default {
       // newY + playerSize = top of player
       // newY = bottom of player
 
-      if (newX + playerSize > gameWidthRem - margin) {
-        this.$refs.gameInterface.scrollLeft =
-          (newX + playerSize - (gameWidthRem - margin)) * rem;
-      } else if (newX < margin) {
-        this.$refs.gameInterface.scrollLeft =
-          (newX + playerSize - margin) * rem;
-      }
+      const defaultTop = state.level.h * rem - gameHeight;
 
       if (!clash) {
         this.$store.commit("updatePos", [newX, newY]);
+
+        if (newX + playerSize > gameWidthRem - margin) {
+          this.$refs.gameInterface.scrollLeft =
+            (newX + playerSize - (gameWidthRem - margin)) * rem;
+        } else if (newX < margin) {
+          this.$refs.gameInterface.scrollLeft =
+            (newX + playerSize - margin) * rem;
+        }
+
+        const distanceFromBottom = newY * rem - (gameHeight - margin * rem);
+        if (distanceFromBottom > 0) {
+          this.$refs.gameInterface.scrollTop = defaultTop - distanceFromBottom;
+        } else {
+          this.$refs.gameInterface.scrollTop = defaultTop;
+        }
       }
     },
   },
