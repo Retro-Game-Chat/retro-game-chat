@@ -138,9 +138,17 @@ export default {
       const playerSize = 1;
       const margin = 10;
 
+      // newX + playerSize = right shoulder of player
+      // newX = left shoulder of player
+      // newY + playerSize = top of player
+      // newY = bottom of player
+
       if (newX + playerSize > gameWidthRem - margin) {
         this.$refs.gameInterface.scrollLeft =
           (newX + playerSize - (gameWidthRem - margin)) * rem;
+      } else if (newX < margin) {
+        this.$refs.gameInterface.scrollLeft =
+          (newX + playerSize - margin) * rem;
       }
 
       if (!clash) {
