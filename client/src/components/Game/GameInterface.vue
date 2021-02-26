@@ -1,12 +1,15 @@
 <template>
-  <div
-    id="gameInterface"
-    class="overflow-hidden border border-black max-h-80"
-    ref="gameInterface"
-  >
-    <!-- hello {{ $auth.user.name }}. Your position is
+  <div class="nes-container with-title is-centered is-dark">
+    <p class="title">{{ $store.state.level.name }}</p>
+    <div
+      id="gameInterface"
+      class="overflow-hidden max-h-80 p-24 bg-nes-dark"
+      ref="gameInterface"
+    >
+      <!-- hello {{ $auth.user.name }}. Your position is
     {{ $store.state.character.x }},{{ $store.state.character.y }}. -->
-    <GameLevel class="mx-auto" />
+      <GameLevel class="mx-auto bg-white" />
+    </div>
   </div>
 </template>
 
@@ -60,7 +63,7 @@ export default {
   },
 
   mounted() {
-    this.tryAndMove([0, 0]);
+    this.tryAndMove(this.$store.state.level.defaultEntrance);
     window.addEventListener("keydown", this.listenKeyDown);
   },
 
@@ -129,25 +132,27 @@ export default {
         return;
       }
 
+      // const exits = state.level.exits.find((exit) => {
+      //   return newX === object.x && newY === object.y;
+      // });
+
       const clash = state.level.objects.find((object) => {
         return newX === object.x && newY === object.y;
       });
-
-      const rem = 16;
-      const gameWidth = this.$refs.gameInterface.offsetWidth;
-      const gameHeight = this.$refs.gameInterface.offsetHeight;
-      const gameWidthRem = Math.floor(gameWidth / rem);
-      const playerSize = 1;
-      const margin = 10;
 
       // newX + playerSize = right shoulder of player
       // newX = left shoulder of player
       // newY + playerSize = top of player
       // newY = bottom of player
 
-      const defaultTop = state.level.h * rem - gameHeight;
-
       if (!clash) {
+        const rem = 16;
+        const gameWidth = this.$refs.gameInterface.offsetWidth;
+        const gameHeight = this.$refs.gameInterface.offsetHeight;
+        const gameWidthRem = Math.floor(gameWidth / rem);
+        const playerSize = 1;
+        const margin = 10;
+
         this.$store.commit("updatePos", [newX, newY]);
 
         if (newX + playerSize > gameWidthRem - margin) {
@@ -159,6 +164,7 @@ export default {
         }
 
         const distanceFromBottom = newY * rem - (gameHeight - margin * rem);
+        const defaultTop = state.level.h * rem - gameHeight;
         if (distanceFromBottom > 0) {
           this.$refs.gameInterface.scrollTop = defaultTop - distanceFromBottom;
         } else {
