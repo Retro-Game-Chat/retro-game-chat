@@ -118,11 +118,6 @@ export default {
       }
 
       const { state } = this.$store;
-      const rem = 16;
-      const offsetLeft = this.$refs.gameInterface.offsetLeft;
-      const pageWidth = this.$refs.gameInterface.offsetParent.offsetWidth;
-      const gameWidth = this.$refs.gameInterface.offsetWidth;
-      const padding = (pageWidth - gameWidth) / 2;
 
       if (
         newX === state.level.w ||
@@ -137,11 +132,15 @@ export default {
         return newX === object.x && newY === object.y;
       });
 
-      if ((newX + 1) * rem > gameWidth - rem) {
-        console.log(newX + 1, Math.floor(gameWidth / rem - 1));
-        console.log(this.$refs.gameInterface.offsetLeft);
-        // this.$refs.gameInterface.offsetLeft = (newX + 1) * rem;
-        console.log("adjust the view offsetLeft");
+      const rem = 16;
+      const gameWidth = this.$refs.gameInterface.offsetWidth;
+      const gameWidthRem = Math.floor(gameWidth / rem);
+      const playerSize = 1;
+      const margin = 10;
+
+      if (newX + playerSize > gameWidthRem - margin) {
+        this.$refs.gameInterface.scrollLeft =
+          (newX + playerSize - (gameWidthRem - margin)) * rem;
       }
 
       if (!clash) {
