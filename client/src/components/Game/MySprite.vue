@@ -1,5 +1,5 @@
 <template>
-  <SpriteContainer :character="$store.state.character" />
+  <SpriteContainer :character="$store.state.player" />
 </template>
 
 <script>

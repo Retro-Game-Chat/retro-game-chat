@@ -14,9 +14,11 @@
     "debug": "~2.6.9",
     "express": "~4.16.1",
     "express-jwt": "^6.0.0",
+    "firebase": "^8.2.10",
     "jwks-rsa": "^1.12.2",
     "morgan": "~1.9.1",
-    "socket.io": "^2.4.1"
+    "socket.io": "^2.4.1",
+    "vuexfire": "^3.2.5"
   },
   "devDependencies": {
     "@vue/eslint-config-prettier": "^6.0.0",

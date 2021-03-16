@@ -3,7 +3,7 @@
     <p class="title">{{ $store.state.level.name }}</p>
     <div
       id="gameInterface"
-      class="overflow-hidden max-h-80 p-24 bg-nes-dark"
+      class="p-24 overflow-hidden max-h-80 bg-nes-dark"
       ref="gameInterface"
     >
       <!-- hello {{ $auth.user.name }}. Your position is
@@ -85,32 +85,32 @@ export default {
     },
 
     moveUp() {
-      const { character } = this.$store.state;
-      let { x: newX, y: newY } = character;
+      const { player } = this.$store.state;
+      let { x: newX, y: newY } = player;
 
       newY++;
       this.tryAndMove([newX, newY]);
     },
 
     moveDown() {
-      const { character } = this.$store.state;
-      let { x: newX, y: newY } = character;
+      const { player } = this.$store.state;
+      let { x: newX, y: newY } = player;
 
       newY--;
       this.tryAndMove([newX, newY]);
     },
 
     moveLeft() {
-      const { character } = this.$store.state;
-      let { x: newX, y: newY } = character;
+      const { player } = this.$store.state;
+      let { x: newX, y: newY } = player;
 
       newX--;
       this.tryAndMove([newX, newY]);
     },
 
     moveRight() {
-      const { character } = this.$store.state;
-      let { x: newX, y: newY } = character;
+      const { player } = this.$store.state;
+      let { x: newX, y: newY } = player;
 
       newX++;
       this.tryAndMove([newX, newY]);
@@ -153,7 +153,7 @@ export default {
         const playerSize = 1;
         const margin = 10;
 
-        this.$store.commit("updatePos", [newX, newY]);
+        this.$store.dispatch("updatePlayerPos", [newX, newY]);
 
         if (newX + playerSize > gameWidthRem - margin) {
           this.$refs.gameInterface.scrollLeft =

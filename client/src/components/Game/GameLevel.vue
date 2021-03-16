@@ -1,6 +1,6 @@
 <template>
   <div
-    class="level border-2 border-black relative"
+    class="relative border-2 border-black level"
     :style="{
       width: `${$store.state.level.w}rem`,
       height: `${$store.state.level.h}rem`,
@@ -9,8 +9,8 @@
     <template v-for="(object, index) in $store.state.level.objects">
       <LevelObject :key="`obj${index}`" :x="object.x" :y="object.y" />
     </template>
-    <template v-for="(player, index) in $store.state.level.players">
-      <SpriteContainer :key="`char${index}`" :character="player" />
+    <template v-for="(character, index) in characters">
+      <SpriteContainer :key="`char${index}`" :character="character" />
     </template>
     <MySprite />
   </div>
@@ -26,6 +26,24 @@ export default {
     SpriteContainer,
     MySprite,
     LevelObject,
+  },
+
+  destroy() {
+    this.$store.dispatch("unbindCharacters");
+    this.$store.dispatch("unbindPlayer");
+  },
+
+  mounted() {
+    this.$store.dispatch("bindCharacters");
+    this.$store.dispatch("bindPlayer");
+  },
+
+  computed: {
+    characters() {
+      return this.$store.state.characters.filter(
+        (char) => char.id !== "aXysdfp2OLjGwTBfgBrS"
+      );
+    },
   },
 };
 </script>
